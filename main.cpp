@@ -14,7 +14,6 @@ int main()
     object Earth;
     object Sun;
     object Moon;
-    initvars();
     Sun.initialize_object
     (
         -1.191989205285392*1000*pow(10, 6), 

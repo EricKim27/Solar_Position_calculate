@@ -1,19 +1,21 @@
 #include "space.hpp"
 #include <fstream>
 
-void space::initvars(){
-    space::vx_e=-2.983302263902714*1000*std::pow(10, 1);
-    space::vy_e=-5.138481408411204*1000*std::pow(10, 0);
-    space::vz_e = 1.105037462794778*1000*std::pow(10, -3);
-    space::vx_s=8.441016159655652*1000*std::pow(10,-3);
-    space::vy_s=-1.221912155158748*1000*std::pow(10, -2);
-    space::vz_s=-7.918737699351246*1000*std::pow(10, -5);
-    space::vx_m=-3.024279048864922*1000*std::pow(10, 1);
-    space::vy_m=-6.014108452553830*1000*std::pow(10, 0);
-    space::vz_m=-5.816013309114965*1000*std::pow(10, -2);
-    space::r_s=Eigen::Vector3f(vx_s, vy_s, vz_s);
-    space::r_m=Eigen::Vector3f(vx_m, vy_m, vz_m);
-    space::r_e = Eigen::Vector3f(vx_e, vy_e, vz_e);
+namespace space
+{
+    float  vx_e=-2.983302263902714*1000*std::pow(10, 1);
+    float  vy_e=-5.138481408411204*1000*std::pow(10, 0);
+    float  vz_e = 1.105037462794778*1000*std::pow(10, -3);
+    float  vx_s=8.441016159655652*1000*std::pow(10,-3);
+    float  vy_s=-1.221912155158748*1000*std::pow(10, -2);
+    float  vz_s=-7.918737699351246*1000*std::pow(10, -5);
+    float  vx_m=-3.024279048864922*1000*std::pow(10, 1);
+    float  vy_m=-6.014108452553830*1000*std::pow(10, 0);
+    float  vz_m=-5.816013309114965*1000*std::pow(10, -2);
+    Eigen::Vector3f r_s( vx_s,  vy_s,  vz_s);
+    Eigen::Vector3f r_m( vx_m,  vy_m,  vz_m);
+    Eigen::Vector3f r_e( vx_e,  vy_e,  vz_e);
+    long double G=6.6739974877 * (std::pow(10, -11));
 }
 
 using namespace space;
