@@ -3,24 +3,24 @@
 
 namespace space
 {
-    float  vx_e=-2.983302263902714*1000*std::pow(10, 1);
-    float  vy_e=-5.138481408411204*1000*std::pow(10, 0);
-    float  vz_e = 1.105037462794778*1000*std::pow(10, -3);
-    float  vx_s=8.441016159655652*1000*std::pow(10,-3);
-    float  vy_s=-1.221912155158748*1000*std::pow(10, -2);
-    float  vz_s=-7.918737699351246*1000*std::pow(10, -5);
-    float  vx_m=-3.024279048864922*1000*std::pow(10, 1);
-    float  vy_m=-6.014108452553830*1000*std::pow(10, 0);
-    float  vz_m=-5.816013309114965*1000*std::pow(10, -2);
-    Eigen::Vector3f r_s( vx_s,  vy_s,  vz_s);
-    Eigen::Vector3f r_m( vx_m,  vy_m,  vz_m);
-    Eigen::Vector3f r_e( vx_e,  vy_e,  vz_e);
+    double  vx_e=-2.983302263902714*1000*std::pow(10, 1);
+    double  vy_e=-5.138481408411204*1000*std::pow(10, 0);
+    double  vz_e = 1.105037462794778*1000*std::pow(10, -3);
+    double  vx_s=8.441016159655652*1000*std::pow(10,-3);
+    double  vy_s=-1.221912155158748*1000*std::pow(10, -2);
+    double  vz_s=-7.918737699351246*1000*std::pow(10, -5);
+    double  vx_m=-3.024279048864922*1000*std::pow(10, 1);
+    double  vy_m=-6.014108452553830*1000*std::pow(10, 0);
+    double  vz_m=-5.816013309114965*1000*std::pow(10, -2);
+    Eigen::Vector3d r_s( vx_s,  vy_s,  vz_s);
+    Eigen::Vector3d r_m( vx_m,  vy_m,  vz_m);
+    Eigen::Vector3d r_e( vx_e,  vy_e,  vz_e);
     long double G=6.6739974877 * (std::pow(10, -11));
 }
 
 using namespace space;
 
-void object::initialize_object(float x, float y, float z, int type)
+void object::initialize_object(double ax, double ay, double az, int type)
 {
     object::x = x;
     object::y = y;
@@ -43,7 +43,7 @@ void object::initialize_object(float x, float y, float z, int type)
 }
 void object::calculate(int type)
 {
-    std::vector<float> data;
+    std::vector<double> data;
     T0 = T0 + dt;
     Eigen::Vector3f a;
     switch(type)
@@ -104,10 +104,10 @@ void object::write_to_csv(int type)
         csv << '\n';
     }
 }
-Eigen::Vector3d space::VectorF(float m1, float m2, Eigen::Vector3f r1, Eigen::Vector3f r2)
+Eigen::Vector3d space::VectorF(float m1, float m2, Eigen::Vector3d r1, Eigen::Vector3d r2)
 {
     float t = G*(m1*m2);
-    Eigen::Vector3f diff = r2 - r1;
+    Eigen::Vector3d diff = r2 - r1;
     return (t * diff * std::pow(diff.norm(), -3)).cast<double>();
 }
 std::vector<size_t> space::time(float t)
